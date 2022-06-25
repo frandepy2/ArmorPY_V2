@@ -1,0 +1,87 @@
+<%- include("template/cabecera",{titulo : 'Productos'}) %>
+<%- include("template/navbar") %>
+
+<% var nproducto ={ numero : 1} %>
+
+<% function funcion(i) { 
+    nproducto.numero = i;
+} %>
+
+
+<h1> <%= titulo %> </h1>
+<br>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-auto">
+            <!-- Agregar un buscador -->
+            <form action="/Productos/buscar" method="post">
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <input type="text" id="nombre" name="nombre" class="form-control">
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary mb-2">Buscar</button>
+                    </div>
+                </div>
+            </form>
+            <!-- Fin del buscador -->
+        </div>
+        <div class="col-auto">
+            <!-- Boton para agregar nuevo Producto -->
+            <div class="row g-3 align-items-center">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Agregar Producto
+                </button>
+            </div>
+        </div>
+
+        <%- include("template/producto_nuevo") %>
+
+        <!-- Fin del boton -->
+    </div>
+    <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% for(var i=0; i<( productos.length === 6 ? 5 : productos.length ); i++) {%>
+            <tr>
+                <th><%= productos[i].producto_id %></th>
+                <td><%= productos[i].producto_nombre %></td>
+                <td><%= productos[i].producto_descripcion %></td>
+                <td><%= productos[i].producto_precio %></td>
+                <td>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#actualizarProducto<%=i%>" ><span class="material-symbols-outlined">edit</span></button>
+                    <a href="/productos/delete/<%= productos[i].producto_id %>" class="btn btn-danger"><span class="material-symbols-outlined">delete</span></a>
+                </td>
+            </tr>
+
+            <%- include("template/actualizar_producto", {dato : i})%>
+
+        <% } %>
+    </tbody>
+  </table>
+
+  <!-- Agregar botones para paginar pagina -->
+    <div class="row">
+        <div class="col-auto">
+            <% if (pagina > 1) { %> 
+                <a href="/productos/<%= parseInt(pagina) - 1 %>" class="btn btn-primary">Anterior</a>
+            <% } %>
+            <% if (cantpaginas == 6) {%>
+                <a href="/productos/<%= parseInt(pagina) + 1 %>" class="btn btn-primary">Siguiente</a>
+            <% } %>
+        </div>
+    </div> 
+        
+</div>
+
+<%- include("template/piePagina") %>
