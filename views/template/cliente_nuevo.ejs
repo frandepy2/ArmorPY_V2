@@ -1,4 +1,4 @@
-<!-- MODAL PARA AGREGAR UN PRODUCTO -->
+<!-- MODAL PARA AGREGAR UN CLIENTE -->
 
 <!-- Modal -->
 <div
@@ -11,7 +11,7 @@
 <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Agregar nuevo Producto</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Nuevo Cliente</h5>
         <button
           type="button"
           class="btn-close"
@@ -20,22 +20,22 @@
         ></button>
       </div>
       <div class="modal-body">
-        <form action="/Productos/create" method="post">
+        <form action="/clientes/create" method="post">
             <div class="form-group">
                 <label for="nombre">Nombre</label>
                 <input type="text" id="nombre" name="nombre" class="form-control">
             </div>
             <div class="form-group">
-                <label for="descripcion">Descripcion</label>
-                <input type="text" id="descripcion" name="descripcion" class="form-control">
+                <label for="apellido">Apellido</label>
+                <input type="text" id="apellido" name="apellido" class="form-control">
             </div>
             <div class="form-group">
-                <label for="precio">Precio</label>
-                <input type="text" id="precio" name="precio" class="form-control">
+                <label for="ci">ci</label>
+                <input type="text" id="ci" name="ci" class="form-control">
             </div>
             <br>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">Agregar Producto</button>
+                <button type="submit" class="btn btn-primary">Agregar Cliente</button>
             </div>
         </form>
     </div>

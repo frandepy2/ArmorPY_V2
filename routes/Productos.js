@@ -22,21 +22,24 @@ router.get('/:page',
     controller.vistaProductos
 );
 
+//Busqueda de los productos
 router.post('/buscar',
     middlewares.verificarBusqueda,
     controller.buscarProductos,
     controller.vistaProductos
 );
 
-
+//Creacion de un producto
 router.post('/create',
     controller.crearProducto
 );
 
+//Actualizacion de un producto
 router.post('/update',
     controller.actualizarProducto
 );
 
+//Eliminacion de un producto
 router.get('/delete/:id',
     controller.eliminarProducto
 );

@@ -1,0 +1,82 @@
+<%- include ("template/cabecera", {titulo : 'Clientes'} ) %>
+<%- include("template/navbar") %>
+
+
+<h1> <%= titulo %> </h1>
+<br>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-auto">
+            <!-- Agregar un buscador -->
+            <form action="/Clientes/buscar" method="post">
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <input type="text" id="nombre" name="nombre" class="form-control">
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary mb-2">Buscar</button>
+                    </div>
+                </div>
+            </form>
+            <!-- Fin del buscador -->
+        </div>
+        <div class="col-auto">
+            <!-- Boton para agregar nuevo Producto -->
+            <div class="row g-3 align-items-center">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Agregar Cliente
+                </button>
+            </div>
+        </div>
+
+        <%- include("template/cliente_nuevo") %>
+
+        <!-- Fin del boton -->
+    </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">ci</th>
+            <th scope="col">DeudaTotal</th>
+            <th scope="col">Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+            <% for(var i=0; i<( clientes.length === 6 ? 5 : clientes.length ); i++) {%>
+                <tr>
+                    <th><%= clientes[i].cliente_id %></th>
+                    <td><%= clientes[i].cliente_nombre %></td>
+                    <td><%= clientes[i].cliente_apellido %></td>
+                    <td><%= clientes[i].cliente_ci %></td>
+                    <td><%= clientes[i].cliente_deuda %></td>
+                    <td>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#actualizarCliente<%=i%>" ><span class="material-symbols-outlined">edit</span></button>
+                        <a href="/clientes/delete/<%= clientes[i].cliente_id %>" class="btn btn-danger"><span class="material-symbols-outlined">delete</span></a>
+                    </td>
+                </tr>
+
+                <!-- Aca volver a agregar los modal que tenia pero ya adaptado a cliente-->
+                <%- include("template/cliente_actualizar", {dato : i} ) %>
+            <% } %>
+        </tbody>
+    </table>
+
+    <!-- Agregar botones para paginar pagina  -->
+    <div class="row">
+        <div class="col-auto">
+            <% if (pagina > 1) { %> 
+                <a href="/clientes/<%= parseInt(pagina) - 1 %>" class="btn btn-primary">Anterior</a>
+            <% } %>
+            <% if (cantpaginas == 6) {%>
+                <a href="/clientes/<%= parseInt(pagina) + 1 %>" class="btn btn-primary">Siguiente</a>
+            <% } %>
+        </div>
+    </div> 
+</div>
+<%- include("template/piePagina") %>
