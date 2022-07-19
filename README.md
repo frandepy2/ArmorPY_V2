@@ -2,8 +2,8 @@
 
 ## Proyecto en construccion
 
-[x] Clientes
-[x] Productos
-[ ] Transacciones
-[ ] Promociones (Actualmente en construccion)
-[ ] Reporte por cliente
+- [x] Clientes
+- [x] Productos
+- [ ] Transacciones
+- [ ] Promociones (Actualmente en construccion)
+- [ ] Reporte por cliente
