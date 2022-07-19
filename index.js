@@ -24,12 +24,14 @@ const usuario = require('./routes/Usuario.js');
 const login = require('./routes/Login');
 const Productos = require('./routes/Productos');
 const Cliente = require('./routes/Cliente');
+const Promociones = require('./routes/Promociones');
 
 //Llamada a las rutas
 app.use('/api/usuarios', usuario);
 app.use('/api/login', login);
 app.use('/productos', Productos);
 app.use('/clientes', Cliente);
+app.use('/promociones', Promociones);
 
 
 

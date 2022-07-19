@@ -1,0 +1,45 @@
+<%- include("template/cabecera",{titulo : 'Promociones'}) %>
+<%- include("template/navbar") %>
+
+<h1> <%= titulo %> </h1>
+<br>
+
+<div class="container">
+
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Fecha de Inicio</th>
+            <th scope="col">Fecha de Fin</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% for(var i=0; i<( promociones.length === 6 ? 5 : promociones.length ); i++) {%>
+                <tr>
+                    <th><%= promociones[i].promocion_id %></th>
+                    <td><%= promociones[i].promocion_tipo %></td>
+                    <td><%= promociones[i].promocion_fecha_inicio %></td>
+                    <td><%= promociones[i].promocion_fecha_fin %></td>
+                    <td>
+                        <!--<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#actualizarProducto<%=i%>" ><span class="material-symbols-outlined">edit</span></button>
+                        <a href="/productos/delete/<%= promociones[i].promocion_id %>" class="btn btn-danger"><span class="material-symbols-outlined">delete</span></a>-->
+                    </td>
+                </tr>
+    
+                <!--Aqui agregar los modal de modificacion de promociones -->
+                
+    
+            <% } %>
+        </tbody>
+    </table>
+
+
+
+</div>
+
+
+<%- include("template/piePagina") %>
